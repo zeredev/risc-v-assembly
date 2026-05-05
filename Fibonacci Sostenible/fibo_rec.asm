@@ -11,13 +11,9 @@
 					.eqv PRINT_INT 1
 					.eqv PRINT_STRING 4
 					
-					.text 
-					
+					.text 					
 FIBO_REC:				li t0, 2
-					
-				  	bge a0, t0, FIBO_REC_LOOP 
-					
-					b exit 
+					blt a0, t0, exit
 					
 FIBO_REC_LOOP:				addi sp, sp, -16
 					sw ra, 12(sp)
@@ -31,15 +27,12 @@ FIBO_REC_LOOP:				addi sp, sp, -16
 					addi a0, a0, -2
 					jal FIBO_REC
 					
-					lw t2, 4(sp)
-					
-					add a0, a0, t2
+					lw t1, 4(sp)
+					add a0, a0, t1
 					
 					lw ra, 12(sp)
 					addi sp, sp, 16
+					ret 
 										
-exit: 					li a7, PRINT_INT 
-					ecall
-					
-					ret
+exit: 					ret
 					

@@ -31,6 +31,9 @@ MAIN:				la a0, ask_usr_input
 				##-- If we want to use the recursive version you have to change FIBO_ITER for FIBO_REC.
 				jal FIBO_REC
 				
+				li a7, PRINT_INT
+				ecall 
+				
 				##-- We exit the program
 				li a7, EXIT
 				ecall
